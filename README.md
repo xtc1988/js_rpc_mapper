@@ -9,10 +9,57 @@
 - JSファイル内のクラス名抽出
 - マッピング結果をCSV出力
 
-## 使い方
-1. requirements.txtで依存パッケージをインストール
-2. main.pyを実行
-3. 入力CSVとJSフォルダパスを指定
+## インストール方法
+1. Python 3.7以降が必要です。
+2. 必要なパッケージをインストールします。
 
-## 出力
-- rpc_name, js_classの2カラムを持つCSV
+```sh
+pip install -r requirements.txt
+```
+
+## 入力ファイル（CSV）
+- 1行目はヘッダー（rpc_name, rpc_class）
+- 例：
+
+```
+rpc_name,rpc_class
+getUser,UserService
+updateUser,UserService
+```
+
+## 使い方
+main.pyのmain関数を呼び出して実行します。
+
+```python
+from main import main
+main('jsフォルダのパス', '入力CSVファイルのパス', '出力CSVファイルのパス')
+```
+
+例：
+```python
+from main import main
+main('sample_js', 'input.csv', 'output.csv')
+```
+
+※ コマンドラインから直接実行する場合は、main関数呼び出し部分を追記してください。
+
+## 出力ファイル（CSV）
+- 2カラム（rpc_name, js_class）
+- 例：
+```
+rpc_name,js_class
+getUser,UserClass
+updateUser,UserClass
+```
+
+## 注意事項・既知の制限
+- JSファイル内のクラス宣言のみ抽出します（関数やオブジェクトは対象外）
+- rpc_nameの判定は簡易的な文字列一致・変数代入のみ対応
+- 大規模なJSコードや特殊な構文には未対応の場合があります
+
+## ライセンス
+MIT License
+
+## 作者
+- 作成者: あなたの名前
+- お問い合わせ: your.email@example.com
