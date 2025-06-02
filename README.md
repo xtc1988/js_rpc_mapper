@@ -41,7 +41,16 @@ from main import main
 main('sample_js', 'input.csv', 'output.csv')
 ```
 
-※ コマンドラインから直接実行する場合は、main関数呼び出し部分を追記してください。
+### コマンドラインから実行する場合
+
+```sh
+python main.py jsフォルダのパス 入力CSVファイルのパス 出力CSVファイルのパス
+```
+
+例：
+```sh
+python main.py sample_js input.csv output.csv
+```
 
 ## 出力ファイル（CSV）
 - 2カラム（rpc_name, js_class）

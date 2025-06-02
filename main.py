@@ -3,6 +3,7 @@ import csv
 import re
 from pathlib import Path
 import esprima
+import sys
 
 # 入力CSVのパース
 def parse_input_csv(csv_path):
@@ -67,5 +68,10 @@ def main(js_dir, input_csv, output_csv):
             writer.writerow(row)
 
 if __name__ == '__main__':
-    # 例: main('js_folder', 'input.csv', 'output.csv')
-    pass
+    if len(sys.argv) != 4:
+        print('使い方: python main.py <js_dir> <input_csv> <output_csv>')
+        sys.exit(1)
+    js_dir = sys.argv[1]
+    input_csv = sys.argv[2]
+    output_csv = sys.argv[3]
+    main(js_dir, input_csv, output_csv)
